@@ -1,0 +1,10 @@
+name = "telegram-notifier"
+main = "src/index.ts"
+compatibility_date = "2023-05-18"
+kv_namespaces = [{ binding = 'telegram-notifier', id = '052f9d2facd14220a2db29dd18c3f6c3' }]
+
+[vars]
+WEBHOOK_URL = "https://notifier.troublor.xyz/webhook"
+LOG_LEVEL = "INFO"
+
+

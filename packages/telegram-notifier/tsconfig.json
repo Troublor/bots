@@ -1,0 +1,8 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "src",
+    "outDir": "dist",
+    "types": ["@types/service-worker-mock", "@cloudflare/workers-types"]
+  }
+}
