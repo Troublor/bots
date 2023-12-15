@@ -1,0 +1,19 @@
+{
+  "name": "@troubots/openai",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "yarn node --loader=ts-node/esm src/main.ts",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@troubots/utils": "workspace:^",
+    "argparse": "^2.0.1"
+  },
+  "devDependencies": {
+    "@types/argparse": "^2",
+    "@types/node": "^20.10.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}

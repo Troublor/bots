@@ -1,0 +1,39 @@
+{
+  "name": "troubots",
+  "packageManager": "yarn@4.0.2",
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "format": "prettier --write .",
+    "build:utils": "yarn workspace @troubots/util build",
+    "run:openai": "yarn workspace @troubots/openai start"
+  },
+  "devDependencies": {
+    "@eslint/js": "^8.55.0",
+    "@types/eslint__js": "^8",
+    "@types/node": "^20.10.4",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
+    "eslint": "^8.55.0",
+    "prettier": "^3.1.1",
+    "syncpack": "^11.2.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "dependenciesMeta": {
+    "ts-node@10.9.2": {
+      "unplugged": true
+    }
+  }
+}
