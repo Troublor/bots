@@ -1,4 +1,4 @@
-import { OpenAPIRoute, Path, Str } from '@cloudflare/itty-router-openapi';
+import { OpenAPIRoute, Path } from '@cloudflare/itty-router-openapi';
 import { Context, Env } from '../types.js';
 
 export class NotifyByGet extends OpenAPIRoute {
@@ -29,6 +29,7 @@ export class NotifyByGet extends OpenAPIRoute {
       },
     },
   };
+
   async handle(
     _: Request,
     __: Env,
@@ -82,6 +83,7 @@ export class NotifyByPost extends OpenAPIRoute {
       },
     },
   };
+
   async handle(
     _: Request,
     __: Env,

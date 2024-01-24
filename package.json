@@ -9,7 +9,7 @@
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier --write .",
-    "build:utils": "yarn workspace @troubots/util build",
+    "build:utils": "yarn workspace @troubots/utils build",
     "run:openai": "yarn workspace @troubots/openai start"
   },
   "devDependencies": {

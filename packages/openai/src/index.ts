@@ -9,10 +9,14 @@ export interface UserMap {
 
 export interface UsageRaw {
   organization_id: string;
+  organization_name: string;
   n_requests: number;
   operation: string;
   n_context_tokens_total: number;
   n_generated_tokens_total: number;
+  api_key_id: string;
+  api_key_name: string;
+  api_key_redacted: string;
   usage_type: string;
   model: string;
   timestamp: Date;
@@ -172,14 +176,18 @@ export async function calculateUsage(
     skip_head: true,
     converter: (row) => ({
       organization_id: row[0],
-      n_requests: parseInt(row[1]),
-      operation: row[2],
-      n_context_tokens_total: parseInt(row[3]),
-      n_generated_tokens_total: parseInt(row[4]),
-      usage_type: row[5],
-      model: row[6],
-      timestamp: new Date(parseInt(row[7]) * 1000),
-      user: row[8],
+      organization_name: row[1],
+      n_requests: parseInt(row[2]),
+      operation: row[3],
+      n_context_tokens_total: parseInt(row[4]),
+      n_generated_tokens_total: parseInt(row[5]),
+      api_key_id: row[6],
+      api_key_name: row[7],
+      api_key_redacted: row[8],
+      usage_type: row[9],
+      model: row[10],
+      timestamp: new Date(parseInt(row[11]) * 1000),
+      user: row[12],
     }),
   });
   // organization_id,n_requests,operation,n_context_tokens_total,n_generated_tokens_total,usage_type,model,timestamp,user
