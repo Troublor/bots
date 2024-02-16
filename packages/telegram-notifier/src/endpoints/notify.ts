@@ -64,9 +64,6 @@ export class NotifyByPost extends OpenAPIRoute {
         description: 'Notifier username',
       }),
     },
-    requestBody: {
-      message: String,
-    },
     responses: {
       '200': {
         description: 'Notification sent successfully',
@@ -85,14 +82,21 @@ export class NotifyByPost extends OpenAPIRoute {
   };
 
   async handle(
-    _: Request,
+    req: Request,
     __: Env,
     ctx: Context,
-    data: { params: { username: string }; body: { message: string } },
+    data: { params: { username: string } },
   ) {
+    const contentType = req.headers.get('content-type');
+    let msg;
+    if (contentType === 'application/json') {
+      msg = JSON.parse(await req.text()).message;
+    } else {
+      msg = await req.text();
+    }
     ctx.logger.info('Sending notification', {
       username: data.params.username,
-      msg: data.body.message,
+      msg,
     });
     const chatId = await ctx.store.getChatId(data.params.username);
     if (!chatId) {
@@ -101,7 +105,7 @@ export class NotifyByPost extends OpenAPIRoute {
         description: `Username ${data.params.username} not linked to any telegram chat.`,
       };
     } else {
-      await ctx.bot.sendMessage(chatId, data.body.message);
+      await ctx.bot.sendMessage(chatId, msg);
       return {
         success: true,
       };
